@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "520861012569",
+    "firebase_url": "https://kigali-guide-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kigali-guide",
+    "storage_bucket": "kigali-guide.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520861012569:android:32bcf2c82dc3a731b41748",
+        "android_client_info": {
+          "package_name": "com.example.assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwm7ZpmZIZpu6ayOc5r15IydvjIWq10-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
