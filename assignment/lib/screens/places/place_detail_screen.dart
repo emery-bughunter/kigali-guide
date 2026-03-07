@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -406,6 +408,67 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                         fontSize: 14,
                         color: AppTheme.textPrimaryColor,
                         height: 1.6,
+                      ),
+                    ),
+                  ],
+
+                  // ── Embedded map ──────────────────────────────────────
+                  if (place.latitude != null && place.longitude != null) ...[
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Location',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.textPrimaryColor,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: SizedBox(
+                        height: 200,
+                        child: FlutterMap(
+                          options: MapOptions(
+                            initialCenter: LatLng(
+                              place.latitude!,
+                              place.longitude!,
+                            ),
+                            initialZoom: 15,
+                            interactionOptions: const InteractionOptions(
+                              flags: InteractiveFlag.none,
+                            ),
+                          ),
+                          children: [
+                            TileLayer(
+                              urlTemplate:
+                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                              userAgentPackageName: 'com.example.assignment',
+                            ),
+                            MarkerLayer(
+                              markers: [
+                                Marker(
+                                  point: LatLng(
+                                    place.latitude!,
+                                    place.longitude!,
+                                  ),
+                                  width: 44,
+                                  height: 44,
+                                  child: CircleAvatar(
+                                    backgroundColor: AppTheme.primaryColor,
+                                    child: Icon(
+                                      AppConstants.getCategoryById(
+                                        place.category,
+                                      ).icon,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

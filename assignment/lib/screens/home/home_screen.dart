@@ -62,140 +62,159 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppTheme.backgroundColor,
       body: Column(
         children: [
-          // ── Gradient app bar ───────────────────────────────────────────────
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [AppTheme.primaryDarkColor, AppTheme.primaryColor],
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(24),
-                bottomRight: Radius.circular(24),
-              ),
+          // ── Hero image app bar ──────────────────────────────────────────
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(28),
+              bottomRight: Radius.circular(28),
             ),
-            child: SafeArea(
-              bottom: false,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Top bar
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.location_city,
-                          color: Colors.white,
-                          size: 28,
-                        ),
-                        const SizedBox(width: 8),
-                        const Expanded(
-                          child: Text(
-                            'Kigali Directory',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+            child: SizedBox(
+              height: 220,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  // Background image
+                  Image.asset('assets/hero img.jpeg', fit: BoxFit.cover),
+                  // Dark green overlay
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          AppTheme.primaryDarkColor.withOpacity(0.78),
+                          AppTheme.primaryColor.withOpacity(0.85),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SafeArea(
+                    bottom: false,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Top bar
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.location_city,
+                                color: Colors.white,
+                                size: 26,
+                              ),
+                              const SizedBox(width: 8),
+                              const Expanded(
+                                child: Text(
+                                  'Kigali Directory',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 0.3,
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () =>
+                                    Navigator.pushNamed(context, '/profile'),
+                                child: CircleAvatar(
+                                  radius: 19,
+                                  backgroundColor: Colors.white.withOpacity(
+                                    0.25,
+                                  ),
+                                  child: Text(
+                                    auth.user?.initials ?? 'U',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/profile'),
-                          icon: CircleAvatar(
-                            radius: 18,
-                            backgroundColor: Colors.white.withOpacity(0.22),
-                            child: Text(
-                              auth.user?.initials ?? 'U',
+                          const SizedBox(height: 6),
+
+                          // Greeting
+                          if (auth.user != null)
+                            Text(
+                              _greeting(auth.user!.displayName),
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               ),
                             ),
-                          ),
-                          tooltip: 'My Profile',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
+                          const Spacer(),
 
-                    // Greeting
-                    if (auth.user != null)
-                      Text(
-                        _greeting(auth.user!.displayName),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
-                    const SizedBox(height: 12),
-
-                    // Search bar
-                    Container(
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.12),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 14),
-                          const Icon(
-                            Icons.search,
-                            color: AppTheme.textSecondaryColor,
-                            size: 20,
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: TextField(
-                              controller: _searchCtrl,
-                              focusNode: _searchFocus,
-                              onTap: _activateSearch,
-                              onChanged: (q) {
-                                places.setSearchQuery(q);
-                                setState(() {});
-                              },
-                              decoration: const InputDecoration(
-                                hintText: 'Search places, services…',
-                                border: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.zero,
-                                isDense: true,
-                                filled: false,
-                              ),
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: AppTheme.textPrimaryColor,
-                              ),
+                          // Search bar
+                          Container(
+                            height: 48,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(14),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.15),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                const SizedBox(width: 14),
+                                const Icon(
+                                  Icons.search,
+                                  color: AppTheme.textSecondaryColor,
+                                  size: 20,
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: TextField(
+                                    controller: _searchCtrl,
+                                    focusNode: _searchFocus,
+                                    onTap: _activateSearch,
+                                    onChanged: (q) {
+                                      places.setSearchQuery(q);
+                                      setState(() {});
+                                    },
+                                    decoration: const InputDecoration(
+                                      hintText: 'Search places, services…',
+                                      border: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      contentPadding: EdgeInsets.zero,
+                                      isDense: true,
+                                      filled: false,
+                                    ),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: AppTheme.textPrimaryColor,
+                                    ),
+                                  ),
+                                ),
+                                if (_searchActive ||
+                                    _searchCtrl.text.isNotEmpty)
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.close,
+                                      size: 18,
+                                      color: AppTheme.textSecondaryColor,
+                                    ),
+                                    onPressed: _clearSearch,
+                                  )
+                                else
+                                  const SizedBox(width: 14),
+                              ],
                             ),
                           ),
-                          if (_searchActive || _searchCtrl.text.isNotEmpty)
-                            IconButton(
-                              icon: const Icon(
-                                Icons.close,
-                                size: 18,
-                                color: AppTheme.textSecondaryColor,
-                              ),
-                              onPressed: _clearSearch,
-                            )
-                          else
-                            const SizedBox(width: 14),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -234,15 +253,57 @@ class _HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final recents = places.allPlaces.take(10).toList();
+    final totalPlaces = places.allPlaces.length;
+    final totalCategories = AppConstants.categories.length;
 
     return CustomScrollView(
       slivers: [
+        // ── Stats banner ───────────────────────────────────────────────────
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+            child: Row(
+              children: [
+                _StatChip(
+                  icon: Icons.place_rounded,
+                  value: '$totalPlaces',
+                  label: 'Places',
+                  color: AppTheme.primaryColor,
+                ),
+                const SizedBox(width: 12),
+                _StatChip(
+                  icon: Icons.category_rounded,
+                  value: '$totalCategories',
+                  label: 'Categories',
+                  color: AppTheme.secondaryColor,
+                ),
+                const SizedBox(width: 12),
+                _StatChip(
+                  icon: Icons.location_city_rounded,
+                  value: 'Kigali',
+                  label: 'City',
+                  color: const Color(0xFF7C3AED),
+                ),
+              ],
+            ),
+          ),
+        ),
+
         // ── Category section ───────────────────────────────────────────────
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
             child: Row(
               children: [
+                Container(
+                  width: 4,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: AppTheme.primaryColor,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(width: 8),
                 const Text(
                   'Explore by Category',
                   style: TextStyle(
@@ -288,9 +349,18 @@ class _HomeContent extends StatelessWidget {
         // ── Recent listings ────────────────────────────────────────────────
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 24, 20, 8),
+            padding: const EdgeInsets.fromLTRB(20, 24, 20, 10),
             child: Row(
               children: [
+                Container(
+                  width: 4,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: AppTheme.secondaryColor,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(width: 8),
                 const Text(
                   'Recently Added',
                   style: TextStyle(
@@ -395,6 +465,66 @@ class _SearchResults extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Small stat chip for the home screen banner
+// ---------------------------------------------------------------------------
+
+class _StatChip extends StatelessWidget {
+  final IconData icon;
+  final String value;
+  final String label;
+  final Color color;
+
+  const _StatChip({
+    required this.icon,
+    required this.value,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.09),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: color.withOpacity(0.18)),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 20, color: color),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    value,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: color,
+                    ),
+                  ),
+                  Text(
+                    label,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: AppTheme.textSecondaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

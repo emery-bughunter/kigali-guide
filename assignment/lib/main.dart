@@ -10,7 +10,7 @@ import 'utils/app_theme.dart';
 import 'screens/splash_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
-import 'screens/home/home_screen.dart';
+import 'screens/main_shell.dart';
 import 'screens/places/place_list_screen.dart';
 import 'screens/places/place_detail_screen.dart';
 import 'screens/places/add_edit_place_screen.dart';
@@ -60,7 +60,7 @@ class KigaliDirectoryApp extends StatelessWidget {
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
 
       case '/home':
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainShell());
 
       case '/place-list':
         return MaterialPageRoute(
