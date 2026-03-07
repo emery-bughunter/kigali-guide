@@ -8,11 +8,6 @@ import '../../utils/app_theme.dart';
 import '../../utils/constants.dart';
 import '../../widgets/custom_text_field.dart';
 
-// ---------------------------------------------------------------------------
-// Add a new place or edit an existing one.
-// Pass a [place] argument via route arguments to enter edit mode.
-// ---------------------------------------------------------------------------
-
 class AddEditPlaceScreen extends StatefulWidget {
   final Place? place;
   const AddEditPlaceScreen({super.key, this.place});
@@ -85,8 +80,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
     super.dispose();
   }
 
-  // ── Location helper ────────────────────────────────────────────────────────
-
   Future<void> _useCurrentLocation() async {
     setState(() => _fetchingLocation = true);
     final pos = await LocationService.getCurrentPosition();
@@ -103,8 +96,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
       );
     }
   }
-
-  // ── Save ───────────────────────────────────────────────────────────────────
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
@@ -191,8 +182,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
     }
   }
 
-  // ── Build ─────────────────────────────────────────────────────────────────
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -204,10 +193,8 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // ── Basic info ─────────────────────────────────────────────────
               _SectionHeader(label: 'Basic Information'),
               const SizedBox(height: 12),
-
               CustomTextField(
                 label: 'Place Name *',
                 hint: 'e.g. King Faysal Hospital',
@@ -222,8 +209,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
                 },
               ),
               const SizedBox(height: 16),
-
-              // Category dropdown
               DropdownButtonFormField<String>(
                 value: _selectedCategory,
                 decoration: const InputDecoration(
@@ -261,8 +246,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
                   return null;
                 },
               ),
-
-              // ── Location ───────────────────────────────────────────────────
               const SizedBox(height: 24),
               _SectionHeader(label: 'Location'),
               const SizedBox(height: 12),
@@ -278,8 +261,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
                     : null,
               ),
               const SizedBox(height: 16),
-
-              // District dropdown
               DropdownButtonFormField<String>(
                 value: _selectedDistrict,
                 decoration: const InputDecoration(
@@ -293,7 +274,6 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Lat / Lon row
               Row(
                 children: [
                   Expanded(

@@ -5,10 +5,6 @@ import 'my_listings/my_listings_screen.dart';
 import 'map/map_view_screen.dart';
 import 'settings/settings_screen.dart';
 
-// ---------------------------------------------------------------------------
-// Root shell that owns the BottomNavigationBar and hosts the 4 main tabs
-// ---------------------------------------------------------------------------
-
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
 
@@ -33,27 +29,25 @@ class _MainShellState extends State<MainShell> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (i) => setState(() => _currentIndex = i),
-        backgroundColor: AppTheme.surfaceColor,
-        indicatorColor: AppTheme.primaryColor.withOpacity(0.12),
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore, color: AppTheme.primaryColor),
+            selectedIcon: Icon(Icons.explore, color: AppTheme.accentColor),
             label: 'Directory',
           ),
           NavigationDestination(
             icon: Icon(Icons.list_alt_outlined),
-            selectedIcon: Icon(Icons.list_alt, color: AppTheme.primaryColor),
+            selectedIcon: Icon(Icons.list_alt, color: AppTheme.accentColor),
             label: 'My Listings',
           ),
           NavigationDestination(
             icon: Icon(Icons.map_outlined),
-            selectedIcon: Icon(Icons.map, color: AppTheme.primaryColor),
+            selectedIcon: Icon(Icons.map, color: AppTheme.accentColor),
             label: 'Map View',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings, color: AppTheme.primaryColor),
+            selectedIcon: Icon(Icons.settings, color: AppTheme.accentColor),
             label: 'Settings',
           ),
         ],

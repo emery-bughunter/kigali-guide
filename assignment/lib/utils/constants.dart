@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ---------------------------------------------------------------------------
-// App-wide constants and category definitions
-// ---------------------------------------------------------------------------
-
 class AppConstants {
   static const String appName = 'Kigali Directory';
   static const String appTagline = 'Services & Places';
@@ -22,18 +18,21 @@ class AppConstants {
       name: 'Hospitals',
       icon: Icons.local_hospital,
       color: Color(0xFFE53935),
+      imagePath: 'assets/hospital.jpeg',
     ),
     PlaceCategory(
       id: 'police',
       name: 'Police Stations',
       icon: Icons.local_police,
       color: Color(0xFF1565C0),
+      imagePath: 'assets/police.jpg',
     ),
     PlaceCategory(
       id: 'library',
       name: 'Libraries',
       icon: Icons.local_library,
       color: Color(0xFF6A1B9A),
+      imagePath: 'assets/library.jpg',
     ),
     PlaceCategory(
       id: 'utility',
@@ -46,6 +45,7 @@ class AppConstants {
       name: 'Restaurants',
       icon: Icons.restaurant,
       color: Color(0xFFF9A825),
+      imagePath: 'assets/restourant.jpg',
     ),
     PlaceCategory(
       id: 'cafe',
@@ -58,6 +58,7 @@ class AppConstants {
       name: 'Parks',
       icon: Icons.park,
       color: Color(0xFF2E7D32),
+      imagePath: 'assets/parks.jpg',
     ),
     PlaceCategory(
       id: 'attraction',
@@ -80,11 +81,13 @@ class PlaceCategory {
   final String name;
   final IconData icon;
   final Color color;
+  final String? imagePath;
 
   const PlaceCategory({
     required this.id,
     required this.name,
     required this.icon,
     required this.color,
+    this.imagePath,
   });
 }

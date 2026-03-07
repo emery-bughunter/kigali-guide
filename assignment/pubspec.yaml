@@ -48,6 +48,11 @@ flutter:
 
   assets:
     - assets/hero img.jpeg
+    - assets/hospital.jpeg
+    - assets/police.jpg
+    - assets/library.jpg
+    - assets/restourant.jpg
+    - assets/parks.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

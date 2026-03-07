@@ -6,16 +6,11 @@ import '../../providers/places_provider.dart';
 import '../../utils/app_theme.dart';
 import '../../utils/constants.dart';
 
-// ---------------------------------------------------------------------------
-// Full-screen interactive map showing all listed places as markers
-// ---------------------------------------------------------------------------
-
 class MapViewScreen extends StatelessWidget {
   const MapViewScreen({super.key});
 
   // Kigali city centre
   static const _kigali = LatLng(-1.9441, 30.0619);
-
   @override
   Widget build(BuildContext context) {
     final places = context.watch<PlacesProvider>();

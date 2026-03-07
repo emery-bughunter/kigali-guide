@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ? 'Good afternoon'
         : 'Good evening';
     final firstName = name.split(' ').first;
-    return '$prefix, $firstName 👋';
+    return '$prefix, $firstName !';
   }
 
   @override
@@ -75,15 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   // Background image
                   Image.asset('assets/hero img.jpeg', fit: BoxFit.cover),
-                  // Dark green overlay
+                  // Dark navy overlay
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          AppTheme.primaryDarkColor.withOpacity(0.78),
-                          AppTheme.primaryColor.withOpacity(0.85),
+                          AppTheme.primaryDarkColor.withOpacity(0.88),
+                          AppTheme.primaryColor.withOpacity(0.95),
                         ],
                       ),
                     ),
@@ -152,15 +152,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             height: 48,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppTheme.surfaceVariant,
                               borderRadius: BorderRadius.circular(14),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                              border: Border.all(
+                                color: AppTheme.dividerColor,
+                                width: 1,
+                              ),
                             ),
                             child: Row(
                               children: [

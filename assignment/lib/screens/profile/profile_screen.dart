@@ -7,10 +7,6 @@ import '../../services/place_service.dart';
 import '../../utils/app_theme.dart';
 import '../../widgets/place_card.dart';
 
-// ---------------------------------------------------------------------------
-// User profile screen – shows account info and the user's own listings
-// ---------------------------------------------------------------------------
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -51,14 +47,12 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          // ── Profile header ─────────────────────────────────────────────────
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.all(24),
               color: AppTheme.primaryColor,
               child: Column(
                 children: [
-                  // Avatar
                   CircleAvatar(
                     radius: 40,
                     backgroundColor: Colors.white.withOpacity(0.22),
@@ -89,8 +83,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-
-          // ── My listings ────────────────────────────────────────────────────
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
@@ -114,8 +106,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-
-          // Stream of places created by this user
           SliverToBoxAdapter(
             child: StreamBuilder<List<Place>>(
               stream: PlaceService().streamByUser(user.uid),

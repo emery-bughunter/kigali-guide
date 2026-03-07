@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
 
-// ---------------------------------------------------------------------------
-// Central theme for the Kigali Directory app
-// Rwanda-inspired green palette with amber accent
-// ---------------------------------------------------------------------------
-
 class AppTheme {
-  static const Color primaryColor = Color(0xFF006B3C);
-  static const Color primaryDarkColor = Color(0xFF004D2C);
-  static const Color primaryLightColor = Color(0xFF4CAF50);
-  static const Color secondaryColor = Color(0xFFFFB300);
-  static const Color backgroundColor = Color(0xFFF5F7FA);
-  static const Color surfaceColor = Colors.white;
-  static const Color errorColor = Color(0xFFB00020);
-  static const Color textPrimaryColor = Color(0xFF1A1A2E);
-  static const Color textSecondaryColor = Color(0xFF6B7280);
-  static const Color dividerColor = Color(0xFFE5E7EB);
+  // ── Dark navy palette ───────────────────────────────────────────────────
+  static const Color primaryColor = Color(0xFF0D1B35); // deep navy
+  static const Color primaryDarkColor = Color(0xFF091324); // darker navy
+  static const Color primaryLightColor = Color(0xFF1A2D50); // lighter navy
+  static const Color secondaryColor = Color(0xFFF5A623); // golden yellow
+  static const Color accentColor = Color(0xFFF5A623); // alias
+
+  // ── Surfaces ────────────────────────────────────────────────────────────
+  static const Color backgroundColor = Color(0xFF0B1829); // scaffold
+  static const Color surfaceColor = Color(0xFF142038); // cards / panels
+  static const Color surfaceVariant = Color(0xFF1A2D4A); // elevated card
+
+  // ── Text & utility ──────────────────────────────────────────────────────
+  static const Color textPrimaryColor = Color(0xFFFFFFFF);
+  static const Color textSecondaryColor = Color(0xFF8899AA);
+  static const Color errorColor = Color(0xFFFF5252);
+  static const Color dividerColor = Color(0xFF1E2D45);
 
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        primary: primaryColor,
-        secondary: secondaryColor,
+      colorScheme: const ColorScheme.dark(
+        primary: accentColor,
+        onPrimary: primaryColor,
+        secondary: accentColor,
+        onSecondary: primaryColor,
         surface: surfaceColor,
+        onSurface: textPrimaryColor,
         error: errorColor,
-        brightness: Brightness.light,
+        onError: Colors.white,
       ),
       scaffoldBackgroundColor: backgroundColor,
       appBarTheme: const AppBarTheme(
@@ -44,8 +48,8 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
+          backgroundColor: accentColor,
+          foregroundColor: primaryColor,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -56,8 +60,8 @@ class AppTheme {
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: primaryColor,
-          side: const BorderSide(color: primaryColor, width: 1.5),
+          foregroundColor: accentColor,
+          side: const BorderSide(color: accentColor, width: 1.5),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -67,13 +71,13 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: primaryColor,
+          foregroundColor: accentColor,
           textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: surfaceVariant,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: dividerColor),
@@ -84,7 +88,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: primaryColor, width: 2),
+          borderSide: const BorderSide(color: accentColor, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -104,25 +108,25 @@ class AppTheme {
       ),
       cardTheme: CardThemeData(
         color: surfaceColor,
-        elevation: 2,
-        shadowColor: Colors.black12,
+        elevation: 0,
+        shadowColor: Colors.black45,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         clipBehavior: Clip.antiAlias,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: primaryColor.withOpacity(0.1),
+        backgroundColor: surfaceVariant,
         labelStyle: const TextStyle(
-          color: primaryColor,
+          color: textPrimaryColor,
           fontWeight: FontWeight.w600,
           fontSize: 12,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        side: BorderSide.none,
+        side: const BorderSide(color: dividerColor),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
+        backgroundColor: accentColor,
+        foregroundColor: primaryColor,
         elevation: 4,
         shape: CircleBorder(),
       ),
@@ -133,7 +137,29 @@ class AppTheme {
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
+        backgroundColor: surfaceVariant,
+        contentTextStyle: const TextStyle(color: textPrimaryColor),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: primaryColor,
+        indicatorColor: accentColor.withOpacity(0.18),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const IconThemeData(color: accentColor);
+          }
+          return const IconThemeData(color: textSecondaryColor);
+        }),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return const TextStyle(
+              color: accentColor,
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            );
+          }
+          return const TextStyle(color: textSecondaryColor, fontSize: 11);
+        }),
       ),
     );
   }

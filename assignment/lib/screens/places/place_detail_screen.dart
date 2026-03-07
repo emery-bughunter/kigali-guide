@@ -11,10 +11,6 @@ import '../../services/place_service.dart';
 import '../../utils/app_theme.dart';
 import '../../utils/constants.dart';
 
-// ---------------------------------------------------------------------------
-// Full place detail screen with map, call, website buttons + edit/delete
-// ---------------------------------------------------------------------------
-
 class PlaceDetailScreen extends StatefulWidget {
   final String placeId;
   const PlaceDetailScreen({super.key, required this.placeId});
@@ -205,15 +201,12 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
               ],
             ],
           ),
-
-          // ── Detail body ───────────────────────────────────────────────────
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Name + verified
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -239,8 +232,6 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                     ],
                   ),
                   const SizedBox(height: 8),
-
-                  // Category chip + distance
                   Wrap(
                     spacing: 8,
                     children: [
@@ -287,8 +278,6 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                     ],
                   ),
                   const SizedBox(height: 12),
-
-                  // Star rating
                   Row(
                     children: [
                       ...List.generate(5, (i) {
@@ -318,8 +307,6 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                     ],
                   ),
                   const SizedBox(height: 20),
-
-                  // ── Action buttons ──────────────────────────────────────
                   Row(
                     children: [
                       Expanded(

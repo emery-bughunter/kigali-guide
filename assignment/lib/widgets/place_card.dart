@@ -93,7 +93,7 @@ class PlaceCard extends StatelessWidget {
                                 child: Icon(
                                   Icons.verified,
                                   size: 15,
-                                  color: AppTheme.primaryColor,
+                                  color: AppTheme.accentColor,
                                 ),
                               ),
                             ],
@@ -175,14 +175,14 @@ class PlaceCard extends StatelessWidget {
                               const Icon(
                                 Icons.near_me_outlined,
                                 size: 12,
-                                color: AppTheme.primaryColor,
+                                color: AppTheme.accentColor,
                               ),
                               const SizedBox(width: 2),
                               Text(
                                 distance!,
                                 style: const TextStyle(
                                   fontSize: 11,
-                                  color: AppTheme.primaryColor,
+                                  color: AppTheme.accentColor,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),

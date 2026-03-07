@@ -7,10 +7,6 @@ import '../../services/place_service.dart';
 import '../../utils/app_theme.dart';
 import '../../widgets/place_card.dart';
 
-// ---------------------------------------------------------------------------
-// Shows only the listings created by the authenticated user
-// ---------------------------------------------------------------------------
-
 class MyListingsScreen extends StatelessWidget {
   const MyListingsScreen({super.key});
 
