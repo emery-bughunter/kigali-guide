@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import '../models/app_user.dart';
 import '../utils/constants.dart';
 
@@ -41,8 +42,8 @@ class AuthService {
     if (credential.user != null) {
       await credential.user!.updateDisplayName(displayName.trim());
 
-      // Persist user profile in Firestore
-      await _firestore
+      // Persist user profile in Firestore (non-blocking)
+      _firestore
           .collection(AppConstants.usersCollection)
           .doc(credential.user!.uid)
           .set({
@@ -50,7 +51,8 @@ class AuthService {
             'email': email.trim(),
             'displayName': displayName.trim(),
             'createdAt': FieldValue.serverTimestamp(),
-          });
+          })
+          .catchError((e) => debugPrint('Firestore profile write failed: $e'));
     }
 
     return _toAppUser(credential.user);

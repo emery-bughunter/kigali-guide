@@ -46,12 +46,14 @@ class DefaultFirebaseOptions {
   // ---- REPLACE ALL VALUES BELOW WITH YOUR OWN FIREBASE PROJECT CONFIG ----
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_YOUR_WEB_API_KEY',
-    appId: 'REPLACE_WITH_YOUR_WEB_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_YOUR_MESSAGING_SENDER_ID',
-    projectId: 'REPLACE_WITH_YOUR_PROJECT_ID',
-    authDomain: 'REPLACE_WITH_YOUR_AUTH_DOMAIN',
-    storageBucket: 'REPLACE_WITH_YOUR_STORAGE_BUCKET',
+    apiKey: 'AIzaSyA1MYWB2z82jxlNGFnHlj2nM9Guq7o5x-o',
+    appId: '1:520861012569:web:1bc6f135b90f348fb41748',
+    messagingSenderId: '520861012569',
+    projectId: 'kigali-guide',
+    authDomain: 'kigali-guide.firebaseapp.com',
+    databaseURL:
+        'https://kigali-guide-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kigali-guide.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -59,7 +61,8 @@ class DefaultFirebaseOptions {
     appId: '1:520861012569:android:32bcf2c82dc3a731b41748',
     messagingSenderId: '520861012569',
     projectId: 'kigali-guide',
-    databaseURL: 'https://kigali-guide-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://kigali-guide-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'kigali-guide.firebasestorage.app',
   );
 
