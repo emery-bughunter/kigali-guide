@@ -4,10 +4,6 @@ import 'package:flutter/foundation.dart';
 import '../models/app_user.dart';
 import '../utils/constants.dart';
 
-// ---------------------------------------------------------------------------
-// Wraps Firebase Authentication operations
-// ---------------------------------------------------------------------------
-
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

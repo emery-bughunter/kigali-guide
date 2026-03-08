@@ -3,10 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../models/app_user.dart';
 import '../services/auth_service.dart';
 
-// ---------------------------------------------------------------------------
-// ChangeNotifier that exposes Firebase Auth state to the widget tree
-// ---------------------------------------------------------------------------
-
 class AuthProvider extends ChangeNotifier {
   final AuthService _authService = AuthService();
 
@@ -37,7 +33,7 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  // ── Auth actions ──────────────────────────────────────────────────────────
+  // authntification
 
   Future<bool> signIn({required String email, required String password}) async {
     _begin();

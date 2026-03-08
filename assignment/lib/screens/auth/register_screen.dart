@@ -3,10 +3,7 @@ import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../utils/app_theme.dart';
 import '../../widgets/custom_text_field.dart';
-
-// ---------------------------------------------------------------------------
-// Registration screen – collects name, email, and password
-// ---------------------------------------------------------------------------
+//registration
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
