@@ -211,9 +211,35 @@ class _LoginScreenState extends State<LoginScreen> {
                             : const Text('Sign In'),
                       ),
                     ),
-                    const SizedBox(height: 36),
+                    const SizedBox(height: 16),
 
-                    // ── Register link ─────────────────────────────────────
+                    // ── Create account button ─────────────────────────────
+                    SizedBox(
+                      height: 52,
+                      child: OutlinedButton.icon(
+                        onPressed: auth.isLoading
+                            ? null
+                            : () {
+                                auth.clearError();
+                                Navigator.pushNamed(context, '/register');
+                              },
+                        icon: const Icon(Icons.person_add_outlined, size: 20),
+                        label: const Text('Create New Account'),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.accentColor,
+                          side: const BorderSide(
+                            color: AppTheme.accentColor,
+                            width: 1.5,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // ── Register link (small) ─────────────────────────────
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -229,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(
-                              color: AppTheme.primaryColor,
+                              color: AppTheme.accentColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

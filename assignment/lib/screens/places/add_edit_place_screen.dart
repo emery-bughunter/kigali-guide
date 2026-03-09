@@ -157,13 +157,14 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
     }
 
     final prov = context.read<PlacesProvider>();
-    final success = _isEditing
+    final errorMsg = _isEditing
         ? await prov.updatePlace(place)
         : await prov.addPlace(place);
 
+    if (!mounted) return;
     setState(() => _saving = false);
 
-    if (success && mounted) {
+    if (errorMsg == null) {
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -172,10 +173,10 @@ class _AddEditPlaceScreenState extends State<AddEditPlaceScreen> {
           ),
         ),
       );
-    } else if (mounted) {
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(prov.error ?? 'Something went wrong.'),
+          content: Text(errorMsg),
           backgroundColor: AppTheme.errorColor,
         ),
       );

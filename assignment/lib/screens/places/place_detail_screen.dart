@@ -125,15 +125,19 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
     );
 
     if (ok == true && mounted) {
-      final success = await context.read<PlacesProvider>().deletePlace(
+      final err = await context.read<PlacesProvider>().deletePlace(
         widget.placeId,
       );
       if (!mounted) return;
-      if (success) {
+      if (err == null) {
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Place deleted successfully.')),
         );
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(err)));
       }
     }
   }

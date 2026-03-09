@@ -109,37 +109,44 @@ class PlacesProvider extends ChangeNotifier {
   }
 
   // ── CRUD forwarding ───────────────────────────────────────────────────────
+  // Returns null on success, or an error message string on failure.
 
-  Future<bool> addPlace(Place place) async {
+  Future<String?> addPlace(Place place) async {
     try {
-      await _service.add(place);
-      return true;
+      final id = await _service.add(place);
+      debugPrint('PlacesProvider: place added with id=$id');
+      return null;
     } catch (e) {
+      debugPrint('PlacesProvider: addPlace error – $e');
       _error = 'Failed to add place: $e';
       notifyListeners();
-      return false;
+      return _error;
     }
   }
 
-  Future<bool> updatePlace(Place place) async {
+  Future<String?> updatePlace(Place place) async {
     try {
       await _service.update(place);
-      return true;
+      debugPrint('PlacesProvider: place updated id=${place.id}');
+      return null;
     } catch (e) {
+      debugPrint('PlacesProvider: updatePlace error – $e');
       _error = 'Failed to update place: $e';
       notifyListeners();
-      return false;
+      return _error;
     }
   }
 
-  Future<bool> deletePlace(String id) async {
+  Future<String?> deletePlace(String id) async {
     try {
       await _service.delete(id);
-      return true;
+      debugPrint('PlacesProvider: place deleted id=$id');
+      return null;
     } catch (e) {
+      debugPrint('PlacesProvider: deletePlace error – $e');
       _error = 'Failed to delete place: $e';
       notifyListeners();
-      return false;
+      return _error;
     }
   }
 
