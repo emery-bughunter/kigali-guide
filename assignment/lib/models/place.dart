@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// ---------------------------------------------------------------------------
-// Represents a service or place listing in Kigali
-// ---------------------------------------------------------------------------
 
 class Place {
   final String id;

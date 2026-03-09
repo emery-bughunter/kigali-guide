@@ -4,10 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../providers/auth_provider.dart';
 import '../../utils/app_theme.dart';
 
-// ---------------------------------------------------------------------------
-// Settings screen – user profile info + location notification preference
-// ---------------------------------------------------------------------------
-
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 

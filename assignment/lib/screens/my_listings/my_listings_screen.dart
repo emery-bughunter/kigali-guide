@@ -33,13 +33,8 @@ class MyListingsScreen extends StatelessWidget {
         ],
       ),
     );
-    if (confirmed == true && context.mounted) {
-      final err = await prov.deletePlace(id);
-      if (err != null && context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(err)),
-        );
-      }
+    if (confirmed == true) {
+      await prov.deletePlace(id);
     }
   }
 

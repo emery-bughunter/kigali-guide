@@ -7,9 +7,6 @@ import '../../utils/constants.dart';
 import '../../widgets/place_card.dart';
 import '../../widgets/category_card.dart';
 
-// ---------------------------------------------------------------------------
-// Main home screen – search bar, category grid, recent listings
-// ---------------------------------------------------------------------------
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -6,10 +6,6 @@ import '../../utils/constants.dart';
 import '../../widgets/place_card.dart';
 import '../../models/place.dart';
 
-// ---------------------------------------------------------------------------
-// Browseable & searchable list of places, optionally filtered by category
-// ---------------------------------------------------------------------------
-
 class PlaceListScreen extends StatefulWidget {
   final String? categoryId;
 
