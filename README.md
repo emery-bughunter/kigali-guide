@@ -88,7 +88,6 @@ flutter run
 # Run on a specific device
 flutter run -d <device-id>
 ```
-
 ## Packages used
 firebase_core
 firebase_auth 
@@ -99,5 +98,5 @@ flutter_map + latlong2
 cached_network_image 
 shared_preferences 
 url_launcher
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## demo video
+```https://youtu.be/j1KPZVmV4XQ```
