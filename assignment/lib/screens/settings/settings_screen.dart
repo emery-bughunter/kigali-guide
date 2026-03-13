@@ -126,8 +126,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
 
           const SizedBox(height: 20),
-
-          // ── Preferences section ────────────────────────────────────────────
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
             child: Text(

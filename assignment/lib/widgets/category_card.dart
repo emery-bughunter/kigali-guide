@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
-// ---------------------------------------------------------------------------
-// Square card for the category grid on the home screen
-// ---------------------------------------------------------------------------
-
 class CategoryCard extends StatelessWidget {
   final PlaceCategory category;
   final int placeCount;

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ---------------------------------------------------------------------------
-// Reusable styled text / form field used across auth and CRUD screens
-// ---------------------------------------------------------------------------
-
 class CustomTextField extends StatelessWidget {
   final String label;
   final String? hint;

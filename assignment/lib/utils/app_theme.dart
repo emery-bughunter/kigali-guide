@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // ── Dark navy palette ───────────────────────────────────────────────────
-  static const Color primaryColor = Color(0xFF0D1B35); // deep navy
-  static const Color primaryDarkColor = Color(0xFF091324); // darker navy
-  static const Color primaryLightColor = Color(0xFF1A2D50); // lighter navy
-  static const Color secondaryColor = Color(0xFFF5A623); // golden yellow
-  static const Color accentColor = Color(0xFFF5A623); // alias
+  // palette
+  static const Color primaryColor = Color(0xFF0D1B35);
+  static const Color primaryDarkColor = Color(0xFF091324);
+  static const Color primaryLightColor = Color(0xFF1A2D50);
+  static const Color secondaryColor = Color(0xFFF5A623);
+  static const Color accentColor = Color(0xFFF5A623);
+  // background
+  static const Color backgroundColor = Color(0xFF0B1829);
+  static const Color surfaceColor = Color(0xFF142038);
+  static const Color surfaceVariant = Color(0xFF1A2D4A);
 
-  // ── Surfaces ────────────────────────────────────────────────────────────
-  static const Color backgroundColor = Color(0xFF0B1829); // scaffold
-  static const Color surfaceColor = Color(0xFF142038); // cards / panels
-  static const Color surfaceVariant = Color(0xFF1A2D4A); // elevated card
-
-  // ── Text & utility ──────────────────────────────────────────────────────
+  //text
   static const Color textPrimaryColor = Color(0xFFFFFFFF);
   static const Color textSecondaryColor = Color(0xFF8899AA);
   static const Color errorColor = Color(0xFFFF5252);

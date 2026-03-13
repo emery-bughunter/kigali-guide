@@ -4,14 +4,11 @@ class AppConstants {
   static const String appName = 'Kigali Directory';
   static const String appTagline = 'Services & Places';
 
-  // Firestore collection names
   static const String placesCollection = 'places';
   static const String usersCollection = 'users';
 
-  // Kigali districts
   static const List<String> districts = ['Gasabo', 'Kicukiro', 'Nyarugenge'];
 
-  // Place categories
   static const List<PlaceCategory> categories = [
     PlaceCategory(
       id: 'hospital',

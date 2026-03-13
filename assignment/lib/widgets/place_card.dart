@@ -4,10 +4,6 @@ import '../models/place.dart';
 import '../utils/constants.dart';
 import '../utils/app_theme.dart';
 
-// ---------------------------------------------------------------------------
-// Place listing card used in list and search results
-// ---------------------------------------------------------------------------
-
 class PlaceCard extends StatelessWidget {
   final Place place;
   final String? distance;
